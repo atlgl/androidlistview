@@ -11,6 +11,16 @@ public class Ciudades {
     private String descripcion;
     private int foto;
 
+    @Override
+    public String toString() {
+        return "Ciudades{" +
+                "idCiudad=" + idCiudad +
+                ", nombre='" + nombre + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", foto=" + foto +
+                '}';
+    }
+
     public Ciudades(int idCiudad, String nombre, String descripcion, int foto) {
         this.idCiudad = idCiudad;
         this.nombre = nombre;

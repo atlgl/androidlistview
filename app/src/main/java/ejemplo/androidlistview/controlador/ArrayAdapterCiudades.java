@@ -25,6 +25,7 @@ public class ArrayAdapterCiudades extends ArrayAdapter<Ciudades> {
 
     public ArrayAdapterCiudades(Activity context,List<Ciudades> ciudadesList) {
         super(context, R.layout.item_ciudad,ciudadesList );
+
         this.activity=context;
         this.ciudadesList=ciudadesList;
     }
