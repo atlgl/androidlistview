@@ -1,5 +1,6 @@
 package ejemplo.androidlistview;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,10 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.transition.Explode;
+import android.transition.Fade;
+import android.transition.Slide;
+import android.transition.Transition;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -36,6 +41,12 @@ public class Main2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
+        Transition exitTrans = new Explode();
+        getWindow().setExitTransition(exitTrans);
+
+        Transition reenterTrans = new Slide();
+        getWindow().setReenterTransition(reenterTrans);
+
         ciudadesList=new ArrayList<>();
         ciudadesList.add(new Ciudades(1,"Inglaterra","Un pais con neblina",R.drawable.inglaterra));
         ciudadesList.add(new Ciudades(2,"Dubai","Un pais con dinero",R.drawable.dubai));
@@ -60,11 +71,12 @@ public class Main2Activity extends AppCompatActivity {
             public void onClick(View v) {
                 int index=recyclerView.getChildPosition(v);
 
-                Intent intent=new Intent(getBaseContext(),DetalleCiudad.class);
+                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(Main2Activity.this);
 
+                Intent intent=new Intent(Main2Activity.this,DetalleCiudad.class);
 
+                startActivity(intent,options.toBundle());
 
-                startActivity(intent);
 
 
                 Toast.makeText(getBaseContext(),"Elemento selecionado"+ciudadesList.get(index).toString(),Toast.LENGTH_SHORT).show();
@@ -72,7 +84,10 @@ public class Main2Activity extends AppCompatActivity {
             }
         });
 
+
+
         recyclerView.setAdapter(adapterCiudadesRecyclerView);
+
         //item Animator e item decoration
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
