@@ -25,7 +25,8 @@
         <activity
             android:name=".DetalleCiudad"
             android:label="@string/title_activity_detalle_ciudad"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".fragmentos.Main3Activity"></activity>
     </application>
 
 </manifest>

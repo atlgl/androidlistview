@@ -21,9 +21,9 @@ import ejemplo.androidlistview.modelo.Ciudades;
 
 public class ArrayAdapterCiudades extends ArrayAdapter<Ciudades> {
     List<Ciudades> ciudadesList;
-    Activity activity;
+    Context activity;
 
-    public ArrayAdapterCiudades(Activity context,List<Ciudades> ciudadesList) {
+    public ArrayAdapterCiudades(Context context,List<Ciudades> ciudadesList) {
         super(context, R.layout.item_ciudad,ciudadesList );
 
         this.activity=context;
@@ -33,7 +33,7 @@ public class ArrayAdapterCiudades extends ArrayAdapter<Ciudades> {
     @NonNull
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater inflater=activity.getLayoutInflater();
+        LayoutInflater inflater=LayoutInflater.from(getContext());
         View view=inflater.inflate(R.layout.item_ciudad,null);
         ImageView imageView= (ImageView) view.findViewById(R.id.imgCiudad);
         TextView txtciudad=(TextView) view.findViewById(R.id.txtCiudadNombre);

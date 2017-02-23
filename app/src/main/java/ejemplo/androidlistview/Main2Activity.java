@@ -76,6 +76,7 @@ public class Main2Activity extends AppCompatActivity {
                 Intent intent=new Intent(Main2Activity.this,DetalleCiudad.class);
 
                 startActivity(intent,options.toBundle());
+                
 
 
 
